@@ -10,20 +10,40 @@
       </ul>
     </div>
   <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+        <div class="fields">
+          <%= form.label :name %>
+          <%= form.text_field :name %><br>
+          <%= form.label :content %>
+          <%= form.text_area :content %><br>
+          <%= form.label :cook_time %>
+          <%= form.text_field :cook_time %><br>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+          <!-- hidden field, user_id
+          t.integer "user_id" -->
 
-  <div class="fields">
-    <%= form.label :name %>
-    <%= form.text_field :name %><br>
-    <%= form.label :content %>
-    <%= form.text_area :content %><br>
-    <%= form.label :cook_time %>
-    <%= form.text_field :cook_time %><br>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <!-- hidden field, user_id
-    t.integer "user_id" -->
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+        </div>
+      </div>
+    <div class="col-sm-6">
+      <div class="fields ingredients">
+          <% Ingredient.all.each do |ing| %>
+          <p>
+            <label for="ingredient_id_<%= ing.id %>"><%= ing.name %></label>
+            <input type="checkbox" name="instruction[ingredient_ids]" value="<%= ing.id %>" id="ingredient_id_<%= ing.id %>">
+          </p>
+          <% end %>
+
+          <div class="actions">
+            <%= form.submit %>
+          </div>
+      </div>
+    </div>
   </div>
+</div>
+
 <% end %>
+
+<br>
