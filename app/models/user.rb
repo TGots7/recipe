@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :instructions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -6,10 +7,12 @@ class User < ApplicationRecord
 
 
    def self.from_omniauth(auth)
+    
     	@user = User.find_or_create_by(uid: auth['uid']) do |user|
         user.provider = auth.provider
         user.uid = auth.uid
         user.email = auth.info.email
+        user.nickname = auth.info.nickname
     end
   end
     
