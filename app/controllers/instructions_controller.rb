@@ -10,6 +10,7 @@ class InstructionsController < ApplicationController
   # GET /instructions/1
   # GET /instructions/1.json
   def show
+    
   end
 
   # GET /instructions/new
@@ -69,6 +70,6 @@ class InstructionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instruction_params
-      params.fetch(:instruction, {})
+      params.require(:instruction).permit(:name, :content, :cook_time, :user_id)
     end
 end

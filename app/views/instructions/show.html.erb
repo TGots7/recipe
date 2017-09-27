@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Recipe for <%= @instruction.name %></h1>
+<p><%= @instruction.content %></p>
+<p><%= @instruction.cook_time %></p>
+
+<h3>Ingredients</h3>
+<ol>
+	<% @instruction.ingredients.each do |ing| %>
+		<li><p><%= ing.name %></p></li>
+	<% end %>
+</ol>
+
 <%= link_to 'Edit', edit_instruction_path(@instruction) %> |
 <%= link_to 'Back', instructions_path %>
