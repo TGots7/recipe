@@ -12,38 +12,45 @@
 
 <!-- all recipes
  -->
- <h2>All Recipes</h2>
- <div class="recipe">
-  <% @instructions.each do |recipe|%>
-    <h3>Name: <%= recipe.name %></h3>
-    <p>Instructions: <%= recipe.content %></p>
-    <p>Cook Time: <%= recipe.cook_time %></p>
-    <div class="ingredients">
-      <h4>Ingredients</h4>
-      <ol>
-      <% recipe.ingredients.all.each do |ing| %>
-        <li><p><%= ing.name %></p></li>
-      <% end %>
-      </ol>
+ <div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+       <h2>All Recipes</h2>
+       <div class="recipe">
+        <% @instructions.each do |recipe|%>
+          <h3>Name: <%= link_to recipe.name, instruction_path(recipe) %></h3>
+          <p>Instructions: <%= recipe.content %></p>
+          <p>Cook Time: <%= recipe.cook_time %></p>
+          <div class="ingredients">
+            <h4>Ingredients</h4>
+            <ol>
+            <% recipe.ingredients.all.each do |ing| %>
+              <li><p><%= ing.name %></p></li>
+            <% end %>
+            </ol>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-</div>
-
-<h2>Your Recipes</h2>
-<div class="recipe">
-  <% @user.instructions.each do |recipe|%>
-    <h3>Name: <%= recipe.name %></h3>
-    <p>Instructions: <%= recipe.content %></p>
-    <p>Cook Time: <%= recipe.cook_time %></p>
-    <div class="ingredients">
-      <h4>Ingredients</h4>
-      <ol>
-      <% recipe.ingredients.all.each do |ing| %>
-        <li><p><%= ing.name %></p></li>
-      <% end %>
-      </ol>
+    <div class="col-xs-6">
+      <h2>Your Recipes</h2>
+      <div class="recipe">
+        <% @user.instructions.each do |recipe|%>
+          <h3>Name: <%= recipe.name %></h3>
+          <p>Instructions: <%= recipe.content %></p>
+          <p>Cook Time: <%= recipe.cook_time %></p>
+          <div class="ingredients">
+            <h4>Ingredients</h4>
+            <ol>
+            <% recipe.ingredients.all.each do |ing| %>
+              <li><p><%= ing.name %></p></li>
+            <% end %>
+            </ol>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>    
 </div>
 
 <br>
