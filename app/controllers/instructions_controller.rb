@@ -25,6 +25,7 @@ class InstructionsController < ApplicationController
   # POST /instructions
   # POST /instructions.json
   def create
+    
     @instruction = Instruction.new(instruction_params)
 
     respond_to do |format|
@@ -70,6 +71,6 @@ class InstructionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instruction_params
-      params.require(:instruction).permit(:name, :content, :cook_time, :user_id)
+      params.require(:instruction).permit(:name, :content, :cook_time, :user_id, :ingredient_ids => [], :ingredients_attributes => [:name])
     end
 end

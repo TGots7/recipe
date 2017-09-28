@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-6">
@@ -23,24 +24,30 @@
           <%= form.hidden_field :user_id, value: current_user.id %>
           <!-- hidden field, user_id
           t.integer "user_id" -->
-
-
         </div>
       </div>
+
     <div class="col-sm-6">
       <div class="fields ingredients">
           <% Ingredient.all.each do |ing| %>
           <p>
             <label for="ingredient_id_<%= ing.id %>"><%= ing.name %></label>
-            <input type="checkbox" name="instruction[ingredient_ids]" value="<%= ing.id %>" id="ingredient_id_<%= ing.id %>">
+            <input type="checkbox" name="instruction[ingredient_ids][]" value="<%= ing.id %>" id="ingredient_id_<%= ing.id %>">
           </p>
           <% end %>
+
+          <div class="fields ingredients">
+          <p>
+            <input type="text" name="instruction[ingredients_attributes][0][name]" id="instruction_ingredients_attributes_0_name" />
+          </p>
+          </div>
 
           <div class="actions">
             <%= form.submit %>
           </div>
       </div>
     </div>
+
   </div>
 </div>
 
