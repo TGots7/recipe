@@ -16,6 +16,9 @@ class InstructionsController < ApplicationController
   # GET /instructions/new
   def new
     @instruction = Instruction.new
+    3.times do
+      @instruction.ingredients.build
+    end
   end
 
   # GET /instructions/1/edit

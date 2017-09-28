@@ -29,16 +29,14 @@
 
     <div class="col-sm-6">
       <div class="fields ingredients">
-          <% Ingredient.all.each do |ing| %>
-          <p>
-            <label for="ingredient_id_<%= ing.id %>"><%= ing.name %></label>
-            <input type="checkbox" name="instruction[ingredient_ids][]" value="<%= ing.id %>" id="ingredient_id_<%= ing.id %>">
-          </p>
-          <% end %>
+          <%= form.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) %>
+          
 
           <div class="fields ingredients">
           <p>
-            <input type="text" name="instruction[ingredients_attributes][0][name]" id="instruction_ingredients_attributes_0_name" />
+            <%= form.fields_for :ingredients do |ingredient_builder| %>
+              <%= ingredient_builder.text_field :name %><br>
+            <% end %>
           </p>
           </div>
 
