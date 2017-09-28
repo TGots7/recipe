@@ -1,0 +1,8 @@
+<h1> A list of all Users who have made a recipe</h1>
+
+<ul>
+	<% @users.each do |chef| %>
+	
+		<li><%= chef.nickname %></li>
+	<% end %>
+</ul>

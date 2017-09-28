@@ -1,4 +1,4 @@
-<nav class="text-center">
+<nav class="text-center header">
   <div class="row">
     <div class="col-xs-4">
         <% if current_user %>
@@ -7,11 +7,15 @@
             <% else %>
                 <h5>Welcome <%= current_user.nickname %></h5>
             <% end %>  
+        <% else %> 
+            <a href="/"> RECIPE </a>
         <% end %>      
     </div>
 
     <div class="col-xs-4">
-          <%= link_to "Home", instructions_path %>
+        <% if current_user %>
+              <%= link_to "Home", chef_path(current_user.id) %>
+        <% end %>
     </div>
     <!-- <div class="col-sm-3"> -->
         <!-- <#% if current_user && current_user.current_cart %>

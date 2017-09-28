@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Recipe for <%= @instruction.name %></h1>
 <p><%= @instruction.content %></p>
 <p><%= @instruction.cook_time %></p>
+
+
 
 <h3>Ingredients</h3>
 <ol>
@@ -11,5 +11,10 @@
 	<% end %>
 </ol>
 
-<%= link_to 'Edit', edit_instruction_path(@instruction) %> |
-<%= link_to 'Back', instructions_path %>
+<p>RATING</p>
+
+
+<% if policy(@instruction).update? %>
+	<%= link_to 'Edit', edit_instruction_path(@instruction) %> <br>
+<% end %>
+

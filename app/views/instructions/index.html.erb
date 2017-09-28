@@ -1,23 +1,8 @@
-<p id="notice"><%= notice %></p>
+<h1 class="text-center">All Recipes</h1>
 
-<%= link_to 'New Recipe', new_instruction_path %>
-<%= link_to 'New Ingredient', new_ingredient_path %>
-
-
-<h1>Recipe home page</h1>
-
-<% if @user.nickname == nil || @user.nickname == "" %>
-  <h2>Welcome <%= @user.email %></h2>
-<% else %>
-  <h2>Welcome <%= @user.nickname %></h2>
-<% end %>
-
-<!-- all recipes
- -->
  <div class="container">
-  <div class="row">
-    <div class="col-xs-6">
-       <h2>All Recipes</h2>
+  <div class="row justify-content-center">
+    <div class="col-sm-10">
        <div class="recipe">
         <% @instructions.each do |recipe|%>
           <h3>Name: <%= link_to recipe.name, instruction_path(recipe) %></h3>
@@ -31,50 +16,19 @@
             <% end %>
             </ol>
           </div>
+          <p>RATING</p>
+
+        <%= link_to 'Edit', edit_instruction_path(recipe) %>
+        <%= link_to 'Destroy', instruction_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+
         <% end %>
+
       </div>
-    </div>
-    <div class="col-xs-6">
-      <h2>Your Recipes</h2>
-      <div class="recipe">
-        <% @user.instructions.each do |recipe|%>
-          <h3>Name: <%= recipe.name %></h3>
-          <p>Instructions: <%= recipe.content %></p>
-          <p>Cook Time: <%= recipe.cook_time %></p>
-          <div class="ingredients">
-            <h4>Ingredients</h4>
-            <ol>
-            <% recipe.ingredients.all.each do |ing| %>
-              <li><p><%= ing.name %></p></li>
-            <% end %>
-            </ol>
-          </div>
-        <% end %>
       </div>
-    </div>
+
+  
   </div>    
 </div>
 
-<br>
-
-<h1>Instructions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @instructions.each do |instruction| %>
-      <tr>
-        <td><%= link_to 'Show', instruction %></td>
-        <td><%= link_to 'Edit', edit_instruction_path(instruction) %></td>
-        <td><%= link_to 'Destroy', instruction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+        
+     

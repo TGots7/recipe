@@ -1,5 +1,6 @@
 class InstructionsController < ApplicationController
   before_action :set_instruction, only: [:show, :edit, :update, :destroy]
+  after_action
 
   # GET /instructions
   # GET /instructions.json
@@ -16,13 +17,16 @@ class InstructionsController < ApplicationController
   # GET /instructions/new
   def new
     @instruction = Instruction.new
-    3.times do
+    6.times do
       @instruction.ingredients.build
     end
   end
 
   # GET /instructions/1/edit
   def edit
+    if !policy(@instruction).update?
+      redirect_to root_path
+    end
   end
 
   # POST /instructions
@@ -45,6 +49,7 @@ class InstructionsController < ApplicationController
   # PATCH/PUT /instructions/1
   # PATCH/PUT /instructions/1.json
   def update
+
     respond_to do |format|
       if @instruction.update(instruction_params)
         format.html { redirect_to @instruction, notice: 'Instruction was successfully updated.' }
