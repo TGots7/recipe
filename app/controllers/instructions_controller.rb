@@ -28,7 +28,7 @@ class InstructionsController < ApplicationController
   # GET /instructions/1/edit
   def edit
     if !policy(@instruction).update?
-      redirect_to root_path
+      redirect_to welcome_path(current_user.id)
     end
   end
 
@@ -67,8 +67,8 @@ class InstructionsController < ApplicationController
   # DELETE /instructions/1
   # DELETE /instructions/1.json
   def destroy
-    if !policy(@instruction).update?
-      redirect_to root_path
+    if !policy(@instruction).destroy?
+      redirect_to user_path(current_user.id)
     end
     @instruction.destroy
     respond_to do |format|

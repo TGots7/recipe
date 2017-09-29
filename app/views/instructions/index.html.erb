@@ -7,19 +7,24 @@
         <% @instructions.each do |recipe|%>
           <h3>Name: <%= link_to recipe.name, instruction_path(recipe) %></h3>
           <p>Cook Time: <%= recipe.cook_time %></p>
-          <div class="ingredients">
-            <h4>Ingredients</h4>
-            <ol>
-            <% recipe.ingredients.all.each do |ing| %>
-              <li><p><%= ing.name %></p></li>
-            <% end %>
-            </ol>
-          </div>
+            <div class="ingredients">
+              <h4>Ingredients</h4>
+              <ol>
+              <% recipe.ingredients.all.each do |ing| %>
+                <li><p><%= ing.name %></p></li>
+              <% end %>
+              </ol>
+            </div>
+
           <p>RATING</p>
 
-        <%= link_to 'Edit', edit_instruction_path(recipe) %>
-        <%= link_to 'Destroy', instruction_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
-
+            <% if policy(recipe).update? %>
+            <%= link_to 'Edit', edit_instruction_path(recipe) %>
+            <% end %>
+            <% if policy(recipe).destroy? %>
+            <%= link_to 'Destroy', instruction_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+            
         <% end %>
 
       </div>

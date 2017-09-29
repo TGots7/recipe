@@ -15,8 +15,7 @@
                 <li><p><%= ing.name %></p></li>
               <% end %>
               </ol>
-                <%= link_to 'Show', recipe %><br>
-                <%= link_to 'Edit', edit_instruction_path(recipe) %><br>
+                <%= link_to 'Edit', edit_instruction_path(recipe) %> | 
                 <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
           <% end %>

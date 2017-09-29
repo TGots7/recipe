@@ -19,6 +19,9 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients/1/edit
   def edit
+    if !policy(@ingredient).update?
+      redirect_to user_path(current_user.id)
+    end
   end
 
   # POST /ingredients
@@ -54,6 +57,9 @@ class IngredientsController < ApplicationController
   # DELETE /ingredients/1
   # DELETE /ingredients/1.json
   def destroy
+    if !policy(@ingredient).destroy?
+      redirect_to user_path(current_user.id)
+    end
     @ingredient.destroy
     respond_to do |format|
       format.html { redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.' }
