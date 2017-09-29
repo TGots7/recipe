@@ -1,5 +1,10 @@
-<h1>New Ingredient</h1>
+<h1 class="text-center">New Ingredient</h1>
 
-<%= render 'form', ingredient: @ingredient %>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-sm-6 text-center">
+			<%= render 'form', ingredient: @ingredient %>
+		</div>
+	</div>
+</div>
 
-<%= link_to 'Back', ingredients_path %>

@@ -1,37 +1,27 @@
-<nav class="text-center header">
+<nav class="header">
+<div class="container">
   <div class="row">
-    <div class="col-xs-4">
+    <div class="col-sm-4">
         <% if current_user %>
             <% if current_user.nickname == nil || current_user.nickname == "" %>
-                <h5>Welcome <%= current_user.email %></h5>
+                <h5> Welcome <%= link_to current_user.email, welcome_path(current_user.id) %></h5>
             <% else %>
-                <h5>Welcome <%= current_user.nickname %></h5>
+                <h5>Welcome <%= link_to current_user.nickname, welcome_path(current_user.id) %></h5>
             <% end %>  
         <% else %> 
             <a href="/"> RECIPE </a>
         <% end %>      
     </div>
-
-    <div class="col-xs-4">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 text-right">
         <% if current_user %>
-              <%= link_to "Home", welcome_path(current_user.id) %>
-        <% end %>
-    </div>
-    <!-- <div class="col-sm-3"> -->
-        <!-- <#% if current_user && current_user.current_cart %>
-          <#%= link_to "Cart", cart_path(current_user.current_cart) %>
-        <#% end %>
-        <#%= link_to("Sign Up", new_user_registration_path) %><br>
- -->
-    <!-- </div> -->
-    <div class="col-sm-4">
-        <% if current_user %>
-            <div class="col-sm-6">  <p><%= link_to("Sign out", destroy_user_session_path, :method => 'delete') %></p> </div>
+            <div class="col-sm-12">  <p><%= link_to("Sign out", destroy_user_session_path, :method => 'delete') %></p> </div>
         <% else %>
             <div class="col-sm-6">  <p><%= link_to("Sign In", new_user_session_path) %><br></p> </div>
             <div class="col-sm-6">  <p><%= link_to("Sign Out", destroy_user_session_path, method: :delete) %><br><br></p> </div>
         <% end %>
     </div>
+</div>
 </nav>
 
 

@@ -1,14 +1,21 @@
-<h1> The Chef's who have given Recipe's</h1>
+<h1 class="text-center"> List of all Chef's with Recipe's</h1>
 
-<% @users.each do |chef| %>
+<div class="container">
 	<div class="row justify-content-center">
-		<div class="col-sm-6 all_list_box">
-			<%= link_to chef.nickname, user_path(chef.id) %>
+		<div class="col-sm-8">
+			<h4>Chef's Nicknames</h4>
+				<% @users.each do |chef| %>
+					<div class="row justify-content-center">
+						<div class="col-sm-12 all_list_box text-center">
+							<%= link_to chef.nickname, user_path(chef.id) %>
+						</div>
+					</div>
+				<% end %>
+		</div>
+
+		<div class="col-sm-4 query-box">
+			<h4>Order the chefs by:</h4>
+			this is where we will break up the lists in orders 
 		</div>
 	</div>
-<% end %>
-
-<div class="row justify-content-center" style="background: darkgray;">
-  <div class="col-xs-2">
-    <img src="https://placehold.it/150x150" alt="sample image">
-  </div>
+</div>

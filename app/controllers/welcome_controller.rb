@@ -1,9 +1,9 @@
 class WelcomeController < ApplicationController
-
+before_action :authenticate_user!
 	def index
 	end
 
-	def user_home
+	def show
 		@user = current_user
 	end
 

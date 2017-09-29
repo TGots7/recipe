@@ -2,34 +2,37 @@
 
  <div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-10">
-       <div class="recipe">
+
+    <div class="col-sm-8">
         <% @instructions.each do |recipe|%>
-          <h3>Name: <%= link_to recipe.name, instruction_path(recipe) %></h3>
+        <div class="recipe">
+          <h3 class="text-center"><%= link_to recipe.name, instruction_path(recipe) %></h3>
           <p>Cook Time: <%= recipe.cook_time %></p>
             <div class="ingredients">
               <h4>Ingredients</h4>
-              <ol>
-              <% recipe.ingredients.all.each do |ing| %>
-                <li><p><%= ing.name %></p></li>
-              <% end %>
-              </ol>
+                <p>
+                  <% recipe.ingredients.all.each do |ing| %>
+                    <%= ing.name %> | 
+                  <% end %>
+                </p>
             </div>
 
           <p>RATING</p>
 
-            <% if policy(recipe).update? %>
-            <%= link_to 'Edit', edit_instruction_path(recipe) %>
-            <% end %>
-            <% if policy(recipe).destroy? %>
-            <%= link_to 'Destroy', instruction_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
-            
+              <% if policy(recipe).update? %>
+                <%= link_to 'Edit', edit_instruction_path(recipe) %>
+              <% end %>
+              <% if policy(recipe).destroy? %>
+                <%= link_to 'Destroy', instruction_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+           </div> 
         <% end %>
-
-      </div>
       </div>
 
+      <div class="col-sm-4 query-box">
+        <h4>Order the Recipes by:</h4>
+        this is where we will break up the lists in orders 
+    </div>
   
   </div>    
 </div>

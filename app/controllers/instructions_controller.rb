@@ -1,6 +1,9 @@
 class InstructionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_instruction, only: [:show, :edit, :update, :destroy]
-  after_action
+
+  # after_action :verify_authorized
+  # after_action :verify_policy_scoped
 
   # GET /instructions
   # GET /instructions.json
