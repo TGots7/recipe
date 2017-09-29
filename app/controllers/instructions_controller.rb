@@ -5,8 +5,11 @@ class InstructionsController < ApplicationController
   # GET /instructions
   # GET /instructions.json
   def index
-    @user = current_user
-    @instructions = Instruction.all
+    if params[:user_id]
+      @instructions = User.find(params[:user_id]).instructions
+    else
+      @instructions = Instruction.all
+    end
   end
   # GET /instructions/1
   # GET /instructions/1.json
@@ -64,6 +67,9 @@ class InstructionsController < ApplicationController
   # DELETE /instructions/1
   # DELETE /instructions/1.json
   def destroy
+    if !policy(@instruction).update?
+      redirect_to root_path
+    end
     @instruction.destroy
     respond_to do |format|
       format.html { redirect_to instructions_url, notice: 'Instruction was successfully destroyed.' }

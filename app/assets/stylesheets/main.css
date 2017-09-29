@@ -7,3 +7,7 @@
 .label {
 	display: inline;
 }
+.all_list_box {
+	background-color: lightgrey;
+	border: solid 2px black;
+}

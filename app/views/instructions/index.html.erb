@@ -6,7 +6,6 @@
        <div class="recipe">
         <% @instructions.each do |recipe|%>
           <h3>Name: <%= link_to recipe.name, instruction_path(recipe) %></h3>
-          <p>Instructions: <%= recipe.content %></p>
           <p>Cook Time: <%= recipe.cook_time %></p>
           <div class="ingredients">
             <h4>Ingredients</h4>

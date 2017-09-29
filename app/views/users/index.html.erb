@@ -1,0 +1,14 @@
+<h1> The Chef's who have given Recipe's</h1>
+
+<% @users.each do |chef| %>
+	<div class="row justify-content-center">
+		<div class="col-sm-6 all_list_box">
+			<%= link_to chef.nickname, user_path(chef.id) %>
+		</div>
+	</div>
+<% end %>
+
+<div class="row justify-content-center" style="background: darkgray;">
+  <div class="col-xs-2">
+    <img src="https://placehold.it/150x150" alt="sample image">
+  </div>

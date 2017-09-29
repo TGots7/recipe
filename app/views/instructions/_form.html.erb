@@ -13,33 +13,34 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
-    <h3 class="text-center">Recipe</h3>
-        <div class="fields">
-          <%= form.label :name %>
-          <%= form.text_field :name %><br>
-          <%= form.label :content %>
-          <%= form.text_area :content %><br>
-          <%= form.label :cook_time %>
-          <%= form.text_field :cook_time %><br>
-          <%= form.hidden_field :user_id, value: current_user.id %>
-        </div>
+      <div class="col-sm-6">
+      <h3 class="text-center">Recipe</h3>
+          <div class="fields">
+            <%= form.label :name %>
+            <%= form.text_field :name %><br>
+            <%= form.label :content %>
+            <%= form.text_area :content %><br>
+            <%= form.label :cook_time %>
+            <%= form.text_field :cook_time %><br>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+          </div>
       </div>
 
-    <div class="col-sm-6">
-    <div class="row">
-      <h3 class="text-center">Ingredients</h3>
-          <div class="col-sm-6 checkbox">
-              <%= form.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) %> 
-            </div>
-          <div class="col-sm-6 fields">
-              <%= form.fields_for :ingredients do |ingredient_builder| %>
-                  <%= ingredient_builder.text_field :name %><br>
-              <% end %>
-          </div>
-    </div>
-          
-    </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <h3 class="text-center">Ingredients</h3>
+              <div class="col-sm-6 checkbox">
+                  <%= form.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) %> 
+              </div>
+              <div class="col-sm-6 fields">
+                  <%= form.fields_for :ingredients do |ingredient_builder| %>
+                      <%= ingredient_builder.text_field :name %><br>
+                  <% end %>
+              </div>
+        </div>    
+      </div>
+
+      <%= form.submit "Create Recipe" %>
 
   </div>
 </div>
