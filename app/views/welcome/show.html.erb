@@ -3,26 +3,28 @@
         <h2>Your Recipes !!!!!!</h2>
     </div>
     <div class="row">
-        <div class="col-sm-9 recipe">
+        <div class="col-sm-8">
           <% @user.instructions.each do |recipe|%>
-            <h3>Name: <%= link_to recipe.name, instruction_path(recipe) %></h3>
-            <p>Instructions: <%= recipe.content %></p>
-            <p>Cook Time: <%= recipe.cook_time %></p>
-            <div class="ingredients">
-              <h4>Ingredients</h4>
-              <ol>
-              <% recipe.ingredients.all.each do |ing| %>
-                <li><p><%= ing.name %></p></li>
-              <% end %>
-              </ol>
-                
-                <%= link_to 'Edit', edit_instruction_path(recipe) %> | 
-                <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <div class="recipe"
+              <h3>Name: <%= link_to recipe.name, instruction_path(recipe) %></h3>
+              <p>Instructions: <%= recipe.content %></p>
+              <p>Cook Time: <%= recipe.cook_time %></p>
+              <div class="ingredients">
+                <h4>Ingredients</h4>
+                <p>
+                  <% recipe.ingredients.all.each do |ing| %>
+                    <%= ing.name %> | 
+                  <% end %>
+                </p>
+                  
+                  <%= link_to 'Edit', edit_instruction_path(recipe) %> | 
+                  <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
             </div>
           <% end %>
         </div>
 
-        <div class="col-sm-3 side_bar">
+        <div class="col-sm-4 side_bar">
             <%= link_to 'To All Chefs', users_path %><br>
             <a href="#"> to a broken up version of chefs </a>
         </div>

@@ -1,22 +1,36 @@
 <h1 class="text-center">Ingredients</h1>
 
-    <% @ingredients.each do |ingredient| %>
-      <tr>
-        <td><%= ingredient.name %></td>
-        <td><%= link_to 'Show', ingredient %></td>
-       
-        <% if policy(ingredient).update? %>
-          <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-        <% end %>
-        <% if policy(ingredient).destroy? %>
-          <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <% @ingredients.each do |ingredient| %>
+        <div class="ingredient-box">
+          <h5><%= ingredient.name %></h5>
+              <%= link_to 'Show', ingredient %>
+              <% if policy(ingredient).update? %>
+                <%= link_to 'Edit', edit_ingredient_path(ingredient) %>
+              <% end %>
+              <% if policy(ingredient).destroy? %>
+                <%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %> 
+        </div>
+      <% end %>
+      </div>
+
+
+      <div class="col-sm-4 query-box">
+        <h4>Order the Recipes by:</h4>
+        this is where we will break up the lists in orders 
+
+        i want to break up into the most used ingredients
+
+         group the ingredients alphabetically 
+      </div>
+
+  </div>
+</div>
 
 <br>
-
-<%= link_to 'New Ingredient', new_ingredient_path %>
-
+<div class="row justify-content-center">
+  <%= link_to 'New Ingredient', new_ingredient_path, :class => "text-center" %>
+</div>

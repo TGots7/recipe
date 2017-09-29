@@ -18,3 +18,11 @@
 	background-color: lightgrey;
 	border: solid 2px black;
 }
+.ingredient-box {
+	background-color: lightgrey;
+	border: solid 2px black;
+}
+.recipe-box {
+	background-color: lightblue;
+	border: solid 2px white;
+}

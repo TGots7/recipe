@@ -1,5 +1,8 @@
-<h1 class="text-center">All Recipes</h1>
+<% if !params[:user].blank? %>
+  <% @instructions = Instruction.where(user: params[:user]) %>
+<% end %>
 
+<h1 class="text-center">All Recipes</h1>
  <div class="container">
   <div class="row justify-content-center">
 
@@ -31,8 +34,22 @@
 
       <div class="col-sm-4 query-box">
         <h4>Order the Recipes by:</h4>
+
         this is where we will break up the lists in orders 
-    </div>
+
+        I want to group by Recipres(instructions) with the most Ingredients, also with the least
+
+        group them by their rating
+
+        <div>
+          <h3>Filter Recipes:</h3>
+          <%= form_tag("/instructions", method: "get") do %>
+            <%= select_tag "user", options_from_collection_for_select(User.all, "id", "nickname"), include_blank: true %>
+            <%= submit_tag "Filter" %>
+          <% end %>
+        </div>
+
+      </div>
   
   </div>    
 </div>
