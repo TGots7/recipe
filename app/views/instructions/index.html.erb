@@ -40,7 +40,7 @@
         <div>
           <h3>Filter Recipes:</h3>
           <%= form_tag("/instructions", method: "get") do %>
-            <%= select_tag "query", options_for_select(["Today", "Old Recipes", "Most Ingredients", "Least Ingredients"]), include_blank: true %>
+            <%= select_tag "query", options_for_select(["Today", "Old Recipes", "Alphabetical", "Alphabetical From Z", "ING Count", "ING Count a"]), include_blank: true %>
             <%= submit_tag "Filter" %>
           <% end %>
         </div>

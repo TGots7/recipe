@@ -27,10 +27,14 @@ class InstructionsController < ApplicationController
             @instructions = Instruction.from_today
           elsif params[:query] == "Old Recipes"
             @instructions = Instruction.old_news
-          elsif params[:query] == "Most Ingredients"
-            @instructions = Instruction.old_news
-          elsif params[:query] == "Least Ingredients"
-            @instructions = Instruction.old_news
+          elsif params[:query] == "Alphabetical"
+            @instructions = Instruction.alphabetical
+          elsif params[:query] == "Alphabetical From Z"
+            @instructions = Instruction.alphabetical_from_z
+          elsif params[:query] == "ING Count"
+            @instructions = Instruction.ing_count
+          elsif params[:query] == "ING Count a"
+            @instructions = Instruction.ing_count_a
           end
         else
           @instructions = Instruction.all

@@ -22,12 +22,23 @@ class Instruction < ApplicationRecord
 		where("created_at <=?", Time.zone.today.beginning_of_day)
 	end
 
-	def self.old_news
-		where("created_at <=?", Time.zone.today.beginning_of_day)
+	def self.alphabetical
+		self.order('name ASC')
+		# where(Ingredients.order(name: :desc))
 	end
 
-	def self.old_news
-		where("created_at <=?", Time.zone.today.beginning_of_day)
+	def self.alphabetical_from_z
+		self.order('name DESC')
+		# Instructions.order(nickname: :desc)
+	end
+
+	def self.ing_count_a
+		self.ingredients.count.order('DESC')
+	end
+
+	def self.ing_count
+		self.ingredients.count.order('ASC')
+		# Instructions.order(nickname: :desc)
 	end
 
 end
