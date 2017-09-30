@@ -32,13 +32,12 @@ class Instruction < ApplicationRecord
 		# Instructions.order(nickname: :desc)
 	end
 
-	def self.ing_count_a
-		self.ingredients.count.order('DESC')
+	def self.least_ingredients
+		self.all.sort_by{ |ins| ins.ingredients.count}
 	end
 
-	def self.ing_count
-		self.ingredients.count.order('ASC')
-		# Instructions.order(nickname: :desc)
+	def self.most_ingredients
+		self.all.sort_by{ |ins| ins.ingredients.count}.reverse
 	end
 
 end

@@ -12,13 +12,19 @@ class InstructionsController < ApplicationController
     if params[:user_id]
       @instructions = User.find(params[:user_id]).instructions
       @users = User.all
-        if !params[:user].blank? 
-          @instructions = Instruction.where(user: params[:user])
-        elsif !params[:date].blank?
-          if params[:date] == "Today"
-            @instructions = Instruction.where(" created_at >=?", Time.zone.today.beginning_of_day)
-          else
-            @instructions = Instruction.where("created_at <?", Time.zone.today.beginning_of_day)
+         if !params[:query].blank? 
+          if params[:query] == "Today"
+            @instructions = Instruction.from_today
+          elsif params[:query] == "Old Recipes"
+            @instructions = Instruction.old_news
+          elsif params[:query] == "Alphabetical"
+            @instructions = Instruction.alphabetical
+          elsif params[:query] == "Alphabetical From Z"
+            @instructions = Instruction.alphabetical_from_z
+          elsif params[:query] == "Most Ingredients"
+            @instructions = Instruction.most_ingredients
+          elsif params[:query] == "Least Ingredients"
+            @instructions = Instruction.least_ingredients
           end
         end
     else       
@@ -31,10 +37,10 @@ class InstructionsController < ApplicationController
             @instructions = Instruction.alphabetical
           elsif params[:query] == "Alphabetical From Z"
             @instructions = Instruction.alphabetical_from_z
-          elsif params[:query] == "ING Count"
-            @instructions = Instruction.ing_count
-          elsif params[:query] == "ING Count a"
-            @instructions = Instruction.ing_count_a
+          elsif params[:query] == "Most Ingredients"
+            @instructions = Instruction.most_ingredients
+          elsif params[:query] == "Least Ingredients"
+            @instructions = Instruction.least_ingredients
           end
         else
           @instructions = Instruction.all
@@ -66,9 +72,8 @@ class InstructionsController < ApplicationController
   # POST /instructions
   # POST /instructions.json
   def create
-    
     @instruction = Instruction.new(instruction_params)
-
+    @instruction.name.capitalize!
     respond_to do |format|
       if @instruction.save
         format.html { redirect_to @instruction, notice: 'Instruction was successfully created.' }
