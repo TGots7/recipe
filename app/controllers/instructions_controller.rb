@@ -1,4 +1,5 @@
 class InstructionsController < ApplicationController
+  
   before_action :authenticate_user!
   before_action :set_instruction, only: [:show, :edit, :update, :destroy]
 
@@ -10,10 +11,33 @@ class InstructionsController < ApplicationController
   def index
     if params[:user_id]
       @instructions = User.find(params[:user_id]).instructions
-    else
-      @instructions = Instruction.all
+      @users = User.all
+        if !params[:user].blank? 
+          @instructions = Instruction.where(user: params[:user])
+        elsif !params[:date].blank?
+          if params[:date] == "Today"
+            @instructions = Instruction.where(" created_at >=?", Time.zone.today.beginning_of_day)
+          else
+            @instructions = Instruction.where("created_at <?", Time.zone.today.beginning_of_day)
+          end
+        end
+    else       
+        if !params[:query].blank? 
+          if params[:query] == "Today"
+            @instructions = Instruction.from_today
+          elsif params[:query] == "Old Recipes"
+            @instructions = Instruction.old_news
+          elsif params[:query] == "Most Ingredients"
+            @instructions = Instruction.old_news
+          elsif params[:query] == "Least Ingredients"
+            @instructions = Instruction.old_news
+          end
+        else
+          @instructions = Instruction.all
+        end
     end
   end
+
   # GET /instructions/1
   # GET /instructions/1.json
   def show
@@ -44,10 +68,8 @@ class InstructionsController < ApplicationController
     respond_to do |format|
       if @instruction.save
         format.html { redirect_to @instruction, notice: 'Instruction was successfully created.' }
-        format.json { render :show, status: :created, location: @instruction }
       else
         format.html { render :new }
-        format.json { render json: @instruction.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,10 +81,8 @@ class InstructionsController < ApplicationController
     respond_to do |format|
       if @instruction.update(instruction_params)
         format.html { redirect_to @instruction, notice: 'Instruction was successfully updated.' }
-        format.json { render :show, status: :ok, location: @instruction }
       else
         format.html { render :edit }
-        format.json { render json: @instruction.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,7 +96,6 @@ class InstructionsController < ApplicationController
     @instruction.destroy
     respond_to do |format|
       format.html { redirect_to instructions_url, notice: 'Instruction was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
