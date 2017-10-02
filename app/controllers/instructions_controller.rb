@@ -9,43 +9,27 @@ class InstructionsController < ApplicationController
   # GET /instructions
   # GET /instructions.json
   def index
-    if params[:user_id]
-      @instructions = User.find(params[:user_id]).instructions
-      @users = User.all
-         if !params[:query].blank? 
-          if params[:query] == "Today"
-            @instructions = Instruction.from_today
-          elsif params[:query] == "Old Recipes"
-            @instructions = Instruction.old_news
-          elsif params[:query] == "Alphabetical"
-            @instructions = Instruction.alphabetical
-          elsif params[:query] == "Alphabetical From Z"
-            @instructions = Instruction.alphabetical_from_z
-          elsif params[:query] == "Most Ingredients"
-            @instructions = Instruction.most_ingredients
-          elsif params[:query] == "Least Ingredients"
-            @instructions = Instruction.least_ingredients
-          end
+      if params[:user_id]
+        @instructions = User.find(params[:user_id]).instructions
+      end
+    else    
+      if !params[:query].blank? 
+        if params[:query] == "Today"
+          @instructions = Instruction.from_today
+        elsif params[:query] == "Old Recipes"
+          @instructions = Instruction.old_news
+        elsif params[:query] == "Alphabetical"
+          @instructions = Instruction.alphabetical
+        elsif params[:query] == "Alphabetical From Z"
+          @instructions = Instruction.alphabetical_from_z
+        elsif params[:query] == "Most Ingredients"
+          @instructions = Instruction.most_ingredients
+        elsif params[:query] == "Least Ingredients"
+          @instructions = Instruction.least_ingredients
         end
-    else       
-        if !params[:query].blank? 
-          if params[:query] == "Today"
-            @instructions = Instruction.from_today
-          elsif params[:query] == "Old Recipes"
-            @instructions = Instruction.old_news
-          elsif params[:query] == "Alphabetical"
-            @instructions = Instruction.alphabetical
-          elsif params[:query] == "Alphabetical From Z"
-            @instructions = Instruction.alphabetical_from_z
-          elsif params[:query] == "Most Ingredients"
-            @instructions = Instruction.most_ingredients
-          elsif params[:query] == "Least Ingredients"
-            @instructions = Instruction.least_ingredients
-          end
-        else
-          @instructions = Instruction.all
-        end
-    end
+      else
+        @instructions = Instruction.all
+      end
   end
 
   # GET /instructions/1
@@ -64,6 +48,7 @@ class InstructionsController < ApplicationController
 
   # GET /instructions/1/edit
   def edit
+    @ingredient = Ingredient.new
     if !policy(@instruction).update?
       redirect_to welcome_path(current_user.id)
     end
@@ -86,7 +71,6 @@ class InstructionsController < ApplicationController
   # PATCH/PUT /instructions/1
   # PATCH/PUT /instructions/1.json
   def update
-
     respond_to do |format|
       if @instruction.update(instruction_params)
         format.html { redirect_to @instruction, notice: 'Recipe was successfully updated.' }

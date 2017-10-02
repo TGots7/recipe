@@ -32,11 +32,6 @@
                 <div class="col-sm-6 checkbox">
                     <%= form.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) %> 
                 </div>
-                <div class="col-sm-6 fields">
-                    <%= form.fields_for :ingredients do |ingredient_builder| %>
-                        <%= ingredient_builder.text_field :name %><br>
-                    <% end %>
-                </div>
             </div>
       </div>    
     </div>
@@ -46,9 +41,5 @@
               <%= form.submit %>
         </div>
       </div>
-
-
-</div>
-
+  </div>
 <% end %>
-

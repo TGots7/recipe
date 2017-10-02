@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
+		
 		if !params[:query].blank? 
 	        if params[:query] == "Alphabetical"
 	            @users = User.alphabetical

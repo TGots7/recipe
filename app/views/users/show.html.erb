@@ -6,7 +6,9 @@
     <div class="row">
         <div class="col-sm-9 recipe">
           <% @user.instructions.each do |recipe|%>
-            <h3>Name: <%= link_to recipe.name, instruction_path(recipe) %></h3>
+            <h3>Name: <%= link_to recipe.name, user_instruction_path(recipe.user_id, recipe.id) %>
+              
+            </h3>
             <p>Cook Time: <%= recipe.cook_time %></p>
             <div class="ingredients">
               <h4>Ingredients</h4>

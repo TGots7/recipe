@@ -10,9 +10,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		end
 	end
 
-	# def auth_hash
-	# 	request.env["omniauth.auth"]
-	# end
-
 	alias_method :twitter, :all
 end

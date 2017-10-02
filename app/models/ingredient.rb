@@ -1,6 +1,7 @@
 class Ingredient < ApplicationRecord
 	has_many :instruction_ingredients
 	has_many :instructions, through: :instruction_ingredients
+	validates :name, presence: true
 
 	def self.alphabetical
 		self.order('name ASC')
