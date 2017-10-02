@@ -6,6 +6,7 @@
       <% @ingredients.each do |ingredient| %>
         <div class="ingredient-box">
           <h5><%= ingredient.name %></h5>
+          <p>Used in <%= ingredient.instructions.count %> Recipes</p>
               <%= link_to 'Show', ingredient %>
               <% if policy(ingredient).update? %>
                 <%= link_to 'Edit', edit_ingredient_path(ingredient) %>
@@ -15,21 +16,19 @@
               <% end %> 
         </div>
       <% end %>
-      </div>
+    </div>
 
 
-      <div class="col-sm-4 query-box">
-        <h4>Order the Recipes by:</h4>
-        this is where we will break up the lists in orders 
-
-        i want to break up into the most used ingredients
-
-         group the ingredients alphabetically 
-      </div>
+    <div class="col-sm-4 query-box">
+      <h4>Order the Recipes by:</h4>
+        <%= form_tag("/ingredients", method: "get") do %>
+          <%= select_tag "query", options_for_select(["Alphabetical", "Alphabetical From Z", "Most Recipes", "Least Recipes"]), include_blank: true %>
+          <%= submit_tag "Filter" %>
+        <% end %>
+    </div>
 
   </div>
 </div>
-
 <br>
 <div class="row justify-content-center">
   <%= link_to 'New Ingredient', new_ingredient_path, :class => "text-center" %>

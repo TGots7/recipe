@@ -5,7 +5,19 @@ class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.json
   def index
-    @ingredients = Ingredient.all
+    if !params[:query].blank? 
+        if params[:query] == "Alphabetical"
+            @ingredients = Ingredient.alphabetical
+        elsif params[:query] == "Alphabetical From Z"
+            @ingredients = Ingredient.alphabetical_from_z
+        elsif params[:query] == "Most Recipes"
+            @ingredients = Ingredient.most_recipes
+        elsif params[:query] == "Least Recipes"
+           @ingredients = Ingredient.least_recipes
+        end
+      else
+        @ingredients = Ingredient.all
+      end
   end
 
   # GET /ingredients/1

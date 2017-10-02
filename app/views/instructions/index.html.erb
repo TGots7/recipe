@@ -18,6 +18,8 @@
 
           <p>RATING</p>
 
+          <p><%= recipe.created_at.strftime("Created on: %m/%d/%Y at: %I:%M%p") %></p>
+
               <% if policy(recipe).update? %>
                 <%= link_to 'Edit', edit_instruction_path(recipe) %>
               <% end %>
@@ -29,14 +31,6 @@
       </div>
 
       <div class="col-sm-4 query-box">
-        <h4>Order the Recipes by:</h4>
-
-        this is where we will break up the lists in orders 
-
-        I want to group by Recipres(instructions) with the most Ingredients, also with the least
-
-        group them by their rating
-
         <div>
           <h3>Filter Recipes:</h3>
           <%= form_tag("/instructions", method: "get") do %>
