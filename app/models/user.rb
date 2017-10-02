@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   def self.alphabetical
     self.order('nickname ASC')
-    
+  end
 
   def self.alphabetical_from_z
     self.order('nickname DESC')
@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    
+  
     	@user = User.find_or_create_by(uid: auth['uid']) do |user|
         user.provider = auth.provider
         user.uid = auth.uid
