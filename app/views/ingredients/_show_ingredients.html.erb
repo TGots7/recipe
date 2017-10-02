@@ -1,8 +1,7 @@
 <% ingredients.each do |ingredient| %>
         <div class="ingredient-box">
-          <h5><%= ingredient.name %></h5>
+          <h5><%= link_to ingredient.name, ingredient_path(ingredient) %></h5>
           <p>Used in <%= ingredient.instructions.count %> Recipes</p>
-              	<%= link_to 'Show', ingredient %>
               <%= render 'admin_links', ingredient: ingredient %>
         </div>
       <% end %>
