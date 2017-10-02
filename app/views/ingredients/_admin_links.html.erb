@@ -1,0 +1,6 @@
+<% if policy(ingredient).update? %>
+   <%= link_to 'Edit', edit_ingredient_path(ingredient) %>
+<% end %>
+<% if policy(ingredient).destroy? %>
+    <%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %> 

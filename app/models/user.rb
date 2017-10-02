@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :instructions
+  validates :nickname, presence: true
   validates :email, uniqueness: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
