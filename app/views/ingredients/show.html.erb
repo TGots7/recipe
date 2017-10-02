@@ -1,13 +1,9 @@
-<h3>New Ingredient</h3>
+<h4><%= @ingredient.name %></h4>
 
-<p><%= @ingredient.name %></p>
-
-<% @ingredient.instructions.each do |recipe| %>
-	<p><%= recipe.name %></p>
-	<% end %>
-
-
-
-
+<h6> This ingredient is used in these recipes </h6>
+	<ul><% @ingredient.instructions.each do |recipe| %>
+		<li><%= link_to recipe.name, instruction_path(recipe) %></li>
+		<% end %>
+	</ul>
 <%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
 <%= link_to 'Back', ingredients_path %>
