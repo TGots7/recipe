@@ -32,7 +32,7 @@
 
       <div class="col-sm-4 query-box">
         <div>
-          <h3>Filter Recipes:</h3>
+          <h3>Order Recipes by:</h3>
           <%= form_tag("/instructions", method: "get") do %>
             <%= select_tag "query", options_for_select(["Today", "Old Recipes", "Alphabetical", "Alphabetical From Z", "Most Ingredients", "Least Ingredients"]), include_blank: true %>
             <%= submit_tag "Filter" %>

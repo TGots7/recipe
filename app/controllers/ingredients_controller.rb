@@ -41,6 +41,7 @@ class IngredientsController < ApplicationController
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.new(ingredient_params)
+    @ingredient.name.capitalize! #@ingredient.name.capitalize
 
     respond_to do |format|
       if @ingredient.save

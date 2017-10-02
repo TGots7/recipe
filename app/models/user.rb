@@ -5,8 +5,25 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def self.alphabetical
+    self.order('nickname ASC')
+    # where(Ingredients.order(name: :desc))
+  end
 
-   def self.from_omniauth(auth)
+  def self.alphabetical_from_z
+    self.order('nickname DESC')
+    # Instructions.order(nickname: :desc)
+  end
+
+  def self.least_recipes
+    self.all.sort_by{ |user| user.instructions.count}
+  end
+
+  def self.most_recipes
+    self.all.sort_by{ |user| user.instructions.count}.reverse
+  end
+
+  def self.from_omniauth(auth)
     
     	@user = User.find_or_create_by(uid: auth['uid']) do |user|
         user.provider = auth.provider
@@ -15,13 +32,6 @@ class User < ApplicationRecord
         user.nickname = auth.info.nickname
     end
   end
-    
-  # def self.create_from_omniauth(auth)
-  #   	create! do |user|
-  #   		user.provider = auth["provider"]
-  #   		user.uid = auth["uid"]
-  #   	end
-  #   end
 
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]

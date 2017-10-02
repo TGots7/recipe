@@ -8,14 +8,18 @@
 					<div class="row justify-content-center">
 						<div class="col-sm-12 all_list_box text-center">
 							<%= link_to chef.nickname, user_path(chef.id) %>
+							<p>Number of Recipes: <%= chef.instructions.count %></p>
 						</div>
 					</div>
 				<% end %>
 		</div>
 
 		<div class="col-sm-4 query-box">
-			<h4>Order the chefs by:</h4>
-			this is where we will break up the lists in orders 
+			<h3>Order Chefs by:</h3>
+		          <%= form_tag("/users", method: "get") do %>
+		            <%= select_tag "query", options_for_select(["Alphabetical", "Alphabetical From Z", "Most Recipes", "Least Recipes"]), include_blank: true %>
+		            <%= submit_tag "Filter" %>
+		          <% end %>
 		</div>
 	</div>
 </div>

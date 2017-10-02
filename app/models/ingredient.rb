@@ -2,7 +2,6 @@ class Ingredient < ApplicationRecord
 	has_many :instruction_ingredients
 	has_many :instructions, through: :instruction_ingredients
 
-
 	def self.alphabetical
 		self.order('name ASC')
 		# where(Ingredients.order(name: :desc))

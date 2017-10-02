@@ -76,7 +76,7 @@ class InstructionsController < ApplicationController
     @instruction.name.capitalize!
     respond_to do |format|
       if @instruction.save
-        format.html { redirect_to @instruction, notice: 'Instruction was successfully created.' }
+        format.html { redirect_to @instruction, notice: 'Recipe was successfully created.' }
       else
         format.html { render :new }
       end
@@ -89,7 +89,7 @@ class InstructionsController < ApplicationController
 
     respond_to do |format|
       if @instruction.update(instruction_params)
-        format.html { redirect_to @instruction, notice: 'Instruction was successfully updated.' }
+        format.html { redirect_to @instruction, notice: 'Recipe was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -104,7 +104,7 @@ class InstructionsController < ApplicationController
     end
     @instruction.destroy
     respond_to do |format|
-      format.html { redirect_to instructions_url, notice: 'Instruction was successfully destroyed.' }
+      format.html { redirect_to instructions_url, notice: 'Recipe was successfully destroyed.' }
     end
   end
 

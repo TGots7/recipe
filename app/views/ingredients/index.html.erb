@@ -20,7 +20,7 @@
 
 
     <div class="col-sm-4 query-box">
-      <h4>Order the Recipes by:</h4>
+      <h3>Order Ingredients by:</h3>
         <%= form_tag("/ingredients", method: "get") do %>
           <%= select_tag "query", options_for_select(["Alphabetical", "Alphabetical From Z", "Most Recipes", "Least Recipes"]), include_blank: true %>
           <%= submit_tag "Filter" %>
