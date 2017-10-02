@@ -1,22 +1,11 @@
 class IngredientsController < ApplicationController
+  
   before_action :authenticate_user!
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
   # GET /ingredients
   def index
-    if !params[:query].blank? 
-        if params[:query] == "Alphabetical"
-            @ingredients = Ingredient.alphabetical
-        elsif params[:query] == "Alphabetical From Z"
-            @ingredients = Ingredient.alphabetical_from_z
-        elsif params[:query] == "Most Recipes"
-            @ingredients = Ingredient.most_recipes
-        elsif params[:query] == "Least Recipes"
-           @ingredients = Ingredient.least_recipes
-        end
-      else
-        @ingredients = Ingredient.all
-      end
+        @ingredients = set_ingredients(params[:query])
   end
 
   # GET /ingredients/1

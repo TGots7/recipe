@@ -12,23 +12,7 @@ class InstructionsController < ApplicationController
         @instructions = User.find(params[:user_id]).instructions
       end
     else    
-      if !params[:query].blank? 
-        if params[:query] == "Today"
-          @instructions = Instruction.from_today
-        elsif params[:query] == "Old Recipes"
-          @instructions = Instruction.old_news
-        elsif params[:query] == "Alphabetical"
-          @instructions = Instruction.alphabetical
-        elsif params[:query] == "Alphabetical From Z"
-          @instructions = Instruction.alphabetical_from_z
-        elsif params[:query] == "Most Ingredients"
-          @instructions = Instruction.most_ingredients
-        elsif params[:query] == "Least Ingredients"
-          @instructions = Instruction.least_ingredients
-        end
-      else
-        @instructions = Instruction.all
-      end
+      @instructions = set_instructions(params[:query])
   end
 
   # GET /instructions/1
