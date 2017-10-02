@@ -1,31 +1,13 @@
   <div class="container">
     <div class="row text-center">
-        <h2>A certain Chefs Recipes</h2>
-        <h3><%= @user.nickname %></h3>
+        <h3><%= @user.nickname %> Recipes</h3>
     </div>
     <div class="row">
-        <div class="col-sm-9 recipe">
-          <% @user.instructions.each do |recipe|%>
-            <h3>Name: <%= link_to recipe.name, user_instruction_path(recipe.user_id, recipe.id) %>
-              
-            </h3>
-            <p>Cook Time: <%= recipe.cook_time %></p>
-            <div class="ingredients">
-              <h4>Ingredients</h4>
-              <ol>
-              <% recipe.ingredients.all.each do |ing| %>
-                <li><p><%= ing.name %></p></li>
-              <% end %>
-              </ol>
-                <%= link_to 'Edit', edit_instruction_path(recipe) %> | 
-                <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-          <% end %>
+        <div class="col-sm-9">
+          <%= render 'instructions/show_recipes', instructions: @user.instructions %>
         </div>
-
         <div class="col-sm-3 side_bar">
             <%= link_to 'To All Chefs', users_path %><br>
-            <a href="#"> to a broken up version of chefs </a>
         </div>
     </div>
 </div>

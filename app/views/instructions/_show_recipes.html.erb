@@ -1,0 +1,26 @@
+<% instructions.each do |recipe|%>
+	<div class="recipe">
+	  <h3 class="text-center"><%= link_to recipe.name, user_instruction_path(recipe.user_id, recipe.id) %></h3>
+	  
+	  <p>Cook Time: <%= recipe.cook_time %></p>
+	    <div class="ingredients">
+	      <h5>Ingredients</h5>
+	        <p>
+	          <% recipe.ingredients.all.each do |ing| %>
+	            <%= ing.name %> | 
+	          <% end %>
+	        </p>
+	    </div>
+
+	  <p>RATING</p>
+
+	  <p><%= recipe.created_at.strftime("Created on: %m/%d/%Y at: %I:%M%p") %> by <%= link_to recipe.user.nickname %></p>
+
+	      <% if policy(recipe).update? %>
+	        <%= link_to 'Edit', edit_instruction_path(recipe) %>
+	      <% end %>
+	      <% if policy(recipe).destroy? %>
+	        <%= link_to 'Destroy', instruction_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>
+	      <% end %>
+	   </div> 
+	<% end %>

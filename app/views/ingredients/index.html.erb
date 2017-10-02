@@ -3,21 +3,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8">
-      <% @ingredients.each do |ingredient| %>
-        <div class="ingredient-box">
-          <h5><%= ingredient.name %></h5>
-          <p>Used in <%= ingredient.instructions.count %> Recipes</p>
-              <%= link_to 'Show', ingredient %>
-              <% if policy(ingredient).update? %>
-                <%= link_to 'Edit', edit_ingredient_path(ingredient) %>
-              <% end %>
-              <% if policy(ingredient).destroy? %>
-                <%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <% end %> 
-        </div>
-      <% end %>
+      <%= render 'show_ingredients', ingredients: @ingredients %>
     </div>
-
 
     <div class="col-sm-4 query-box">
       <h3>Order Ingredients by:</h3>
