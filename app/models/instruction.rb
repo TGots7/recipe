@@ -26,12 +26,10 @@ class Instruction < ApplicationRecord
 
 	def self.alphabetical
 		self.order('name ASC')
-		# where(Ingredients.order(name: :desc))
 	end
 
 	def self.alphabetical_from_z
 		self.order('name DESC')
-		# Instructions.order(nickname: :desc)
 	end
 
 	def self.least_ingredients

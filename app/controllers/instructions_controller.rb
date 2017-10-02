@@ -7,7 +7,6 @@ class InstructionsController < ApplicationController
   # after_action :verify_policy_scoped
 
   # GET /instructions
-  # GET /instructions.json
   def index
       if params[:user_id]
         @instructions = User.find(params[:user_id]).instructions
@@ -33,7 +32,6 @@ class InstructionsController < ApplicationController
   end
 
   # GET /instructions/1
-  # GET /instructions/1.json
   def show
     
   end
@@ -55,7 +53,6 @@ class InstructionsController < ApplicationController
   end
 
   # POST /instructions
-  # POST /instructions.json
   def create
     @instruction = Instruction.new(instruction_params)
     @instruction.name.capitalize!
@@ -69,7 +66,6 @@ class InstructionsController < ApplicationController
   end
 
   # PATCH/PUT /instructions/1
-  # PATCH/PUT /instructions/1.json
   def update
     respond_to do |format|
       if @instruction.update(instruction_params)
@@ -81,7 +77,6 @@ class InstructionsController < ApplicationController
   end
 
   # DELETE /instructions/1
-  # DELETE /instructions/1.json
   def destroy
     if !policy(@instruction).destroy?
       redirect_to user_path(current_user.id)
@@ -98,7 +93,6 @@ class InstructionsController < ApplicationController
       @instruction = Instruction.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def instruction_params
       params.require(:instruction).permit(:name, :content, :cook_time, :user_id, :ingredient_ids => [], :ingredients_attributes => [:name])
     end

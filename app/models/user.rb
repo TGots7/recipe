@@ -9,12 +9,10 @@ class User < ApplicationRecord
 
   def self.alphabetical
     self.order('nickname ASC')
-    # where(Ingredients.order(name: :desc))
-  end
+    
 
   def self.alphabetical_from_z
     self.order('nickname DESC')
-    # Instructions.order(nickname: :desc)
   end
 
   def self.least_recipes

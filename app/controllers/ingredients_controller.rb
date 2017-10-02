@@ -3,7 +3,6 @@ class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
   # GET /ingredients
-  # GET /ingredients.json
   def index
     if !params[:query].blank? 
         if params[:query] == "Alphabetical"
@@ -21,7 +20,6 @@ class IngredientsController < ApplicationController
   end
 
   # GET /ingredients/1
-  # GET /ingredients/1.json
   def show
   end
 
@@ -53,7 +51,6 @@ class IngredientsController < ApplicationController
   end
 
   # PATCH/PUT /ingredients/1
-  # PATCH/PUT /ingredients/1.json
   def update
     respond_to do |format|
       if @ingredient.update(ingredient_params)
@@ -65,7 +62,6 @@ class IngredientsController < ApplicationController
   end
 
   # DELETE /ingredients/1
-  # DELETE /ingredients/1.json
   def destroy
     if !policy(@ingredient).destroy?
       redirect_to user_path(current_user.id)
@@ -82,7 +78,6 @@ class IngredientsController < ApplicationController
       @ingredient = Ingredient.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def ingredient_params
       params.require(:ingredient).permit(:name)
     end
