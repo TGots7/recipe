@@ -8,11 +8,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   def self.alphabetical
-    self.order('nickname ASC')
+    self.all.sort_by{ |user| user.nickname.downcase}
+    # array.order('nickname ASC')
   end
 
   def self.alphabetical_from_z
-    self.order('nickname DESC')
+    self.all.sort_by{ |user| user.nickname.downcase}.reverse
+    # self.order('nickname DESC')
   end
 
   def self.least_recipes
