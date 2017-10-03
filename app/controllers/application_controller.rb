@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 	include IngredientsHelper
 	include InstructionsHelper
+  include UsersHelper
 	include Pundit
   	protect_from_forgery with: :exception
 
