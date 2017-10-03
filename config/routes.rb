@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: 'registrations'}
   	resources :users, only: [:show, :index] do
-  		resources :instructions, only: [:show, :index]
+  		resources :instructions, only: [:show, :index, :new, :create, :edit, :update]
   	end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

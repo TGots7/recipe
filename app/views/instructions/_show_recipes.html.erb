@@ -17,7 +17,7 @@
 	  <p><%= recipe.created_at.strftime("Created on: %m/%d/%Y at: %I:%M%p") %> by <%= link_to recipe.user.nickname %></p>
 
 	      <% if policy(recipe).update? %>
-	        <%= link_to 'Edit', edit_instruction_path(recipe) %>
+	        <%= link_to 'Edit', edit_user_instruction_path(recipe.user_id, recipe) %>
 	      <% end %>
 	      <% if policy(recipe).destroy? %>
 	        <%= link_to 'Destroy', instruction_path(recipe), method: :delete, data: { confirm: 'Are you sure?' } %>

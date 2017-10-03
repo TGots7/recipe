@@ -22,7 +22,7 @@
             <%= form.text_area :content %><br>
             <%= form.label :cook_time %><br>
             <%= form.text_field :cook_time %><br>
-            <%= form.hidden_field :user_id, value: current_user.id %>
+            <%= form.hidden_field :user_id, value: params[:user_id] %>
           </div>
       </div>
 
