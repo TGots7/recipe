@@ -6,7 +6,7 @@
 				<% @users.each do |chef| %>
 					<div class="row justify-content-center">
 						<div class="col-sm-12 all_list_box text-center">
-							<%= link_to chef.nickname, user_path(chef.id) %>
+							<%= link_to chef.nickname, user_path(chef) %>
 							<p>Number of Recipes: <%= chef.instructions.count %></p>
 						</div>
 					</div>

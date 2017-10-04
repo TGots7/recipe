@@ -7,6 +7,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  def to_param
+    "#{id}-#{nickname}"
+  end
+
   def self.alphabetical
     self.all.sort_by{ |user| user.nickname.downcase}
     # array.order('nickname ASC')

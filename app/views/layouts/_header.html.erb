@@ -2,15 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-        <% if current_user %>
-            <% if current_user.nickname == nil || current_user.nickname == "" %>
-                <h5> Welcome <%= link_to current_user.email, welcome_path(current_user.id) %></h5>
-            <% else %>
-                <h5>Welcome <%= link_to current_user.nickname, welcome_path(current_user.id) %></h5>
-            <% end %>  
-        <% else %> 
-            <a href="/"> RECIPE </a>
-        <% end %>      
+        <h5>Welcome <%= link_to current_user.nickname, welcome_path(current_user) %></h5>
     </div>
     <div class="col-sm-4"></div>
     <div class="col-sm-4 text-right">

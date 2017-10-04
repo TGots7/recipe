@@ -4,6 +4,9 @@ class Instruction < ApplicationRecord
 	has_many :ingredients, through: :instruction_ingredients
 	validates :name, :content, :cook_time, presence: true
 
+	def to_param
+    	"#{id}-#{name}"
+  	end
 
 	def ingredients_attributes=(ingredients_hash)
 		ingredients_hash.each do |i, ingredients_attributes|
