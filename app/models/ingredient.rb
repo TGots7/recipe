@@ -3,6 +3,10 @@ class Ingredient < ApplicationRecord
 	has_many :instructions, through: :instruction_ingredients
 	validates :name, presence: true
 
+	def to_param
+    	"#{id}-#{name}"
+  	end
+
 	def self.alphabetical
 		self.order('name ASC')
 	end

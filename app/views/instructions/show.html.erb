@@ -8,7 +8,7 @@
 		<h3>Ingredients</h3>
 		<ol>
 			<% @instruction.ingredients.each do |ing| %>
-				<li><p><%= ing.name %></p></li>
+				<li><p><%= link_to ing.name, ingredient_path(ing) %></p></li>
 			<% end %>
 		</ol>
 

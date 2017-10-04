@@ -7,7 +7,7 @@
 	      <h5>Ingredients</h5>
 	        <p>
 	          <% recipe.ingredients.all.each do |ing| %>
-	            <%= ing.name %> | 
+	            <%= link_to ing.name, ingredient_path(ing) %> | 
 	          <% end %>
 	        </p>
 	    </div>
