@@ -54,9 +54,10 @@ class IngredientsController < ApplicationController
     if !policy(@ingredient).destroy?
       redirect_to user_path(current_user.id)
     end
-    @ingredient.destroy
-    respond_to do |format|
-      format.html { redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.' }
+    if @ingredient.destroy
+      redirect_to ingredients_path, notice: 'Ingredient was successfully destroyed.' 
+    else
+      redirect_to ingredients_path, notice: 'Unable to destroy the Ingredient.' 
     end
   end
 

@@ -36,6 +36,7 @@
                 <div class="col-sm-6 fields">
                     <%= form.fields_for :ingredients do |ingredient_builder| %>
                         <%= ingredient_builder.text_field :name %><br>
+                        <%= ingredient_builder.text_field :health_rating %><br>
                 </div>
             </div>
       </div>    

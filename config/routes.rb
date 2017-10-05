@@ -13,8 +13,4 @@ Rails.application.routes.draw do
  	get '/welcome/:id' => 'welcome#show', as: 'welcome'
   get 'auth/twitter/callback' => 'sessions#create'
 
-  # namespace :admin do 
-  #   resources :stats, only: [:index]
-  # end
-
 end
