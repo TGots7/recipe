@@ -1,18 +1,14 @@
 class InstructionsController < ApplicationController
-  
   before_action :authenticate_user!
   before_action :set_instruction, only: [:show, :edit, :update, :destroy]
-
-  # after_action :verify_authorized
-  # after_action :verify_policy_scoped
 
   # GET /instructions
   def index
       if params[:user_id]
         @instructions = User.find(params[:user_id]).instructions
+      else    
+        @instructions = set_instructions(params[:query])
       end
-    else    
-      @instructions = set_instructions(params[:query])
   end
 
   # GET /instructions/1
@@ -30,9 +26,13 @@ class InstructionsController < ApplicationController
 
   # GET /instructions/1/edit
   def edit
-    @ingredient = Ingredient.new
     if !policy(@instruction).update?
       redirect_to welcome_path(current_user.id)
+    else 
+      4.times do
+      @instruction.ingredients.build
+      end
+      render :edit
     end
   end
 

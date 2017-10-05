@@ -1,4 +1,5 @@
-<%= form_with(model: instruction, local: true) do |form| %>
+<%= render 'layouts/form_errors', object: instruction %>
+<%= form_with instruction do |form| %>
   <% if instruction.errors.any? %>
     <div id="error_explanation">
       <h4><%= pluralize(instruction.errors.count, "error") %> prohibited this instruction from being saved:</h4>
@@ -15,7 +16,7 @@
   <div class="row">
       <div class="col-sm-6">
       <h3 class="text-center">Recipe</h3>
-          <div class="fields_with_errors">
+          <div class="fields">
             <%= form.label :name %><br>
             <%= form.text_field :name %><br>
             <%= form.label :content %><br>
@@ -28,22 +29,20 @@
 
       <div class="col-sm-6">
           <h3 class="text-center">Ingredients</h3>
-            <div class="fields_with_errors">
+            <div class="fields">
                <div class="col-sm-6 checkbox">
                     <%= form.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) %> 
                 </div>
                 <div class="col-sm-6 fields">
                     <%= form.fields_for :ingredients do |ingredient_builder| %>
                         <%= ingredient_builder.text_field :name %><br>
-                        <%= ingredient_builder.text_field :quanity %><br>
-                    <% end %>
                 </div>
             </div>
       </div>    
     </div>
 
       <div class="row justify-content-center submit-row">
-        <div class="fields_with_errors text-center">
+        <div class="fields text-center">
               <%= form.submit %>
         </div>
       </div>
