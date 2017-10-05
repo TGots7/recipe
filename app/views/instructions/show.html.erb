@@ -13,8 +13,12 @@
 		</ol>
 
 		<p>RATING</p>
-
-		<%= link_to 'Edit', edit_user_instruction_path(@instruction.user, @instruction) %>
+		<% if policy(@instruction).update? %>
+			<%= link_to 'Edit', edit_user_instruction_path(@instruction.user, @instruction) %>
+		<% end %>
 		</div>
 	</div>
 </div>
+ 
+	       
+	      
