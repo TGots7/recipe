@@ -14,10 +14,7 @@
 
 		<p>RATING</p>
 
-
-		<% if policy(@instruction).update? %>
-			<%= link_to 'Edit', edit_instruction_path(@instruction) %> <br>
-		<% end %>
+		<%= link_to 'Edit', edit_user_instruction_path(@instruction.user, @instruction) %>
 		</div>
 	</div>
 </div>

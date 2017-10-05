@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   
   resources :ingredients
-  resources :instructions do 
-  	resources :users, only: [:show, :index]
-  end
+  resources :instructions 
+  # do 
+  # 	resources :users, only: [:show, :index]
+  # end
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: 'registrations'}
   	resources :users, only: [:show, :index] do
