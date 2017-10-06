@@ -4,17 +4,20 @@
 This is a personal project, I built this Recipe Ruby on Rails App for a course I am taking at Flatiron School.
 
 Installing
-Clone this directory from GitHub, run bundle install in the terminal. After run the rails s command to start your server and intereact with the web app. The app should load on your localhost:(....) browser page.
+#Installation guide
 
-*A step by step series of examples that tell you have to get a development env running
+Clone this repo and install the needed gems:
 
-*Say what the step will be
+$ bundle install
+Next, migrate the database:
 
-*Give the example
-*And repeat
+$ rails db:migrate
+Now run the app using:
 
-*until finished
-End with an example of getting some data out of the system or using it for a little demo
+$ rails server
+Instructions
+
+
 
 Built With
 
@@ -25,6 +28,8 @@ Authors
 Tyler Gotto - Initial work 
 
 License
+
+This Web Application is available as open source under the terms of the MIT License.
 
 This project is licensed under #Learn.co Educational Content License
  - see the LICENSE.md file for details
