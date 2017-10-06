@@ -2,6 +2,8 @@ class Ingredient < ApplicationRecord
 	has_many :instruction_ingredients
 	has_many :instructions, through: :instruction_ingredients
 	validates :name, presence: true
+	validates :name, uniqueness: true
+	
 
 	def to_param
     	"#{id}-#{name}"

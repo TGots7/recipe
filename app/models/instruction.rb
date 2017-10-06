@@ -11,7 +11,7 @@ class Instruction < ApplicationRecord
 	def ingredients_attributes=(ingredients_hash)
 		ingredients_hash.each do |i, ingredients_attributes|
 			if ingredients_attributes[:name].present?
-				ingredient = Ingredient.find_or_create_by(name: ingredients_attributes[:name].capitalize!)
+				ingredient = Ingredient.find_or_create_by(name: ingredients_attributes[:name].capitalize!, organic: ingredients_attributes[:organic] )
 				if !self.ingredients.include?(ingredient)
 					self.instruction_ingredients.build(:ingredient => ingredient)
 				end

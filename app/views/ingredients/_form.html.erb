@@ -6,6 +6,11 @@
       <%= form.text_field :name %><br><br>
   </div>
 
+  <div class="check">
+      <%= form.check_box :organic, class: "form-check-input" %>
+      <%= label :organic, "Check box if this ingredient is organic" %><br><br>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

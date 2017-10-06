@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20171005233126) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "health_rating", default: 3
+    t.boolean "organic", default: false
   end
 
   create_table "instruction_ingredients", force: :cascade do |t|

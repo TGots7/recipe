@@ -78,6 +78,6 @@ class InstructionsController < ApplicationController
     end
 
     def instruction_params
-      params.require(:instruction).permit(:name, :content, :cook_time, :user_id, :ingredient_ids => [], :ingredients_attributes => [:name])
+      params.require(:instruction).permit(:name, :content, :cook_time, :user_id, :ingredient_ids => [], :ingredients_attributes => [:name, :organic])
     end
 end
