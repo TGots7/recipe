@@ -4,10 +4,11 @@
 	  
 	  <p>Cook Time: <%= recipe.cook_time %></p>
 	    <div class="ingredients">
-	      <h5>Ingredients</h5>
+	      <h6>Ingredients</h6>
 	        <p>
-	          <% recipe.ingredients.all.each do |ing| %>
-	            <%= link_to ing.name, ingredient_path(ing) %> | 
+	          <% recipe.instruction_ingredients.each do |ing| %>
+	            <%= link_to ing.ingredient.name, ingredient_path(ing) %> |
+	           
 	          <% end %>
 	        </p>
 	    </div>

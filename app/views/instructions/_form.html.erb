@@ -28,8 +28,9 @@
                         <%= ingredient_builder.label :name %>
                         <%= ingredient_builder.text_field :name %>
                         <%= ingredient_builder.check_box :organic, class: "form-check-input" %>
-                        <%= label :organic, "Check if organic" %><br>
-                        
+                        <%= label :organic, "Check if organic" %><br> 
+                        <%#= ingredient_builder.label :quantity %>  
+                        <%#= ingredient_builder.text_field :quantity %>      
                     <% end %>
                   </div>
                 </div>

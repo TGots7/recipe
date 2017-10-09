@@ -1,8 +1,9 @@
 class Instruction < ApplicationRecord
 	belongs_to :user
-	has_many :instruction_ingredients
+	has_many :instruction_ingredients, dependent: :destroy
 	has_many :ingredients, through: :instruction_ingredients
 	validates :name, :content, :cook_time, presence: true
+	
 
 	def to_param
     	"#{id}-#{name}"
@@ -11,9 +12,10 @@ class Instruction < ApplicationRecord
 	def ingredients_attributes=(ingredients_hash)
 		ingredients_hash.each do |i, ingredients_attributes|
 			if ingredients_attributes[:name].present?
-				ingredient = Ingredient.find_or_create_by(name: ingredients_attributes[:name].capitalize!, organic: ingredients_attributes[:organic] )
+				ingredient = Ingredient.find_or_create_by(name: ingredients_attributes[:name].capitalize!, organic: ingredients_attributes[:organic])
+				binding.pry
 				if !self.ingredients.include?(ingredient)
-					self.instruction_ingredients.build(:ingredient => ingredient)
+					self.instruction_ingredients.build(:ingredient => ingredient).quantity=(ingredients_attributes[:quantity])
 				end
 			end
 		end

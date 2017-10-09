@@ -5,11 +5,12 @@
 		<p><%= @instruction.content %></p>
 		<p><%= @instruction.cook_time %></p>
 
-		<h3>Ingredients</h3>
+		<h6>Ingredients</h6>
 		<ol>
-			<% @instruction.ingredients.each do |ing| %>
-				<li><p><%= link_to ing.name, ingredient_path(ing) %></p></li>
-			<% end %>
+			<% @instruction.instruction_ingredients.each do |ing| %>
+	            <%= link_to ing.ingredient.name, ingredient_path(ing) %> | 
+	            <%= ing.quantity %><br>
+	          <% end %>		
 		</ol>
 
 		<p>RATING</p>

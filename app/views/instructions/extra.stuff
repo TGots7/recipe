@@ -1,0 +1,60 @@
+
+
+      <div class="col-sm-6">
+          <h3 class="text-center">Ingredients</h3>
+            <div class="row">
+              <div class="col-sm-12 checkbox">
+                    <%= form.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) %> 
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                    <%= form.fields_for :ingredients do |ingredient_builder| %>
+                        <%= ingredient_builder.label :name %>
+                        <%= ingredient_builder.text_field :name %>
+                        <%= ingredient_builder.check_box :organic, class: "form-check-input" %>
+                        <%= label :organic, "Check if organic" %><br> 
+                        <%= ingredient_builder.label :quantity %>  
+                        <%= ingredient_builder.text_field :quantity %>      
+                    <% end %>
+                </div>
+              </div>
+       </div>
+
+
+
+
+       def ingredients_attributes=(ingredients_hash)
+		ingredients_hash.each do |i, ingredients_attributes|
+			if ingredients_attributes[:name].present?
+				ingredient = Ingredient.find_or_create_by(name: ingredients_attributes[:name].capitalize!, organic: ingredients_attributes[:organic])
+				binding.pry
+				if !self.ingredients.include?(ingredient)
+					self.instruction_ingredients.build(:ingredient => ingredient).quantity=(ingredients_attributes[:quantity])
+				end
+			end
+		end
+	end
+
+
+	<div class="row">
+                <div class="col-sm-12">
+                    <%= form.fields_for :instruction_ingredients do |inst_ing_builder| %>
+                      <%= inst_ing_builder.fields :ingredients do |ing| %>
+                              <%= ing.label :name %>  
+                              <%= ing.text_field :name %>  
+                              <%= ing.check_box :organic, class: "form-check-input" %>
+                              <%= label :organic, "Check if organic" %><br>     
+                              <% end %>
+                      <%= inst_ing_builder.label :quantity %>  
+                      <%= inst_ing_builder.text_field :quantity %> 
+                    <% end %>
+                </div>
+              </div>
+
+
+
+	<%= ingredient_builder.label :name %>
+                        <%= ingredient_builder.text_field :name %>
+                        <%= ingredient_builder.check_box :organic, class: "form-check-input" %>
+                        <%= label :organic, "Check if organic" %><br> 

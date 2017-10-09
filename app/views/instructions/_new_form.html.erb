@@ -15,26 +15,6 @@
           </div>
       </div>
 
-      <div class="col-sm-4">
-          <h3 class="text-center">Ingredients</h3>
-            <div class="row">
-              <div class="col-sm-12">
-                <% instruction.instruction_ingredients.each do |ing| %>  
-                <div class="row">
-                  <div class="col-sm-5">    
-                     <input type="checkbox" name="instruction[instruction_ingredients][][id]" value="<%=ing.id%>" checked/><%= ing.ingredient.name %> 
-                    
-                  </div>
-                  <div class="col-sm-7"> 
-                    <label>Quantity</label>
-                    <input type="text" name="instruction[instruction_ingredients][][quantity]" style="width: 100px;" value="<%= ing.quantity%>"> <br>    
-                  </div>
-                </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-
        <div class="col-sm-4">
           <h3 class="text-center">New Ingredients</h3>
             <div class="row">
@@ -66,6 +46,25 @@
                 </div>
               </div>
        </div>
+
+      <div class="col-sm-4">
+          <h3 class="text-center">Ingredients</h3>
+            <div class="row">
+              <div class="col-sm-12">
+                <% Ingredient.all.each do |ing| %>  
+                <div class="row">
+                  <div class="col-sm-5">    
+                    <input type="checkbox" name="instruction[ingredients][][name]" value="<%=ing.id%>"/><%= ing.name %> 
+                  </div>
+                  <div class="col-sm-7"> 
+                    <label>Quantity</label>
+                    <input type="text" name="instruction[ingredients][][quantity]" style="width: 100px;"> <br>    
+                  </div>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
 
 </div>
 
