@@ -1,0 +1,43 @@
+<%= render 'layouts/form_errors', object: instruction %>
+<%= form_for instruction do |form| %>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-6">
+      <h3 class="text-center">Recipe</h3>
+          <div class="fields">
+            <%= form.label :name %><br>
+            <%= form.text_field :name, :placeholder => "Name" %><br>
+            <%= form.label "Instructions"  %><br>
+            <%= form.text_area :content, :placeholder => "Recipe Instructions" %><br>
+            <%= form.label :cook_time %><br>
+            <%= form.text_field :cook_time, :placeholder => "(ex,. 45 mins)" %><br>
+            <%= form.hidden_field :user_id, value: params[:user_id] %>
+          </div>
+      </div>
+
+      <div class="col-sm-6">
+          <h3 class="text-center">Ingredients</h3>
+                    <%#= form.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) %> 
+              
+                    <%= form.fields_for :instruction_ingredients do |inst_ing| %>
+                        <%= inst_ing.fields_for :ingredient  do |ing| %>
+                        	<%= ing.label :name %>
+	                        <%= ing.text_field :name %>
+	                        <%= ing.collection_select :ingredient_id, Ingredient.order(:name),:id,:name, include_blank: true %><br>
+	                        <%= ing.check_box :organic, class: "form-check-input" %>
+	                        <%= label :organic, "Check if organic" %><br>
+	                    <% end %>
+                            <%= inst_ing.label :quantity %>
+                            <%= inst_ing.text_field :quantity %><br>
+                    <% end %>
+                  
+            </div>
+    </div>
+
+      <div class="row justify-content-center submit-row">
+        <div class="fields text-center">
+              <%= form.submit %>
+        </div>
+      </div>
+</div>
+<% end %>

@@ -1,3 +1,11 @@
+html, body {
+	background-image: url('recipebg.jpg');
+	background-color: blue;
+    background-size: cover;
+}
+.recipe-title {
+	color: white;
+}
 .header {
 	background-color: yellow;
 }
