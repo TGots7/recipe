@@ -5,11 +5,11 @@
 		</div>
 	</div>
 	<div class="row justify-content-center">
-		<div class="col-sm-6 text-center">
-			<%= link_to("Log In", new_user_session_path) %><br>
+		<div class="col-sm-5 col-sm-offset-1 text-center login_box">
+			<%= link_to "Log In", new_user_session_path, :class => "login-title" %><br>
 		</div>
-		<div class="col-sm-6 text-center">
-			<%= link_to("Sign Up", new_user_registration_path) %><br>
+		<div class="col-sm-5 col-sm-offset-1 text-center signin_box">
+			<%= link_to "Sign Up", new_user_registration_path, :class => "singin-title" %><br>
 		</div>
 	</div>
 </div>
