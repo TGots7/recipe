@@ -1,0 +1,15 @@
+final_form.extra
+
+
+
+<%= form.fields_for :instruction_ingredients do |inst_ing| %>
+                        <%= inst_ing.fields_for :ingredient  do |ing| %>
+                        	<%= ing.label :name %>
+	                        <%= ing.text_field :name %>
+	                        <%= ing.collection_select :ingredient_id, Ingredient.order(:name),:id,:name, include_blank: true %><br>
+	                        <%= ing.check_box :organic, class: "form-check-input" %>
+	                        <%= label :organic, "Check if organic" %><br>
+	                    <% end %>
+                            <%= inst_ing.label :quantity %>
+                            <%= inst_ing.text_field :quantity %><br>
+                    <% end %>

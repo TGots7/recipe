@@ -20,7 +20,8 @@ class InstructionsController < ApplicationController
   def new
     @instruction = Instruction.new
     6.times do
-      @instruction.instruction_ingredients.build
+      @instruction_ingredients = @instruction.instruction_ingredients.build
+      @ingredient = @instruction_ingredients.build_ingredient
     end
   end
 
@@ -53,42 +54,15 @@ class InstructionsController < ApplicationController
 
   # PATCH/PUT /instructions/1
   def update
-    
+    @instruction.update(instruction_params)
+    @instruction.save
     respond_to do |format|
-      if @instruction.update(:name => params[:instruction][:name], :content => params[:instruction][:content], :cook_time => params[:instruction][:cook_time], :user_id => params[:instruction][:user_id])
-          if params[:instruction][:instruction_ingredients]
-            params[:instruction][:instruction_ingredients].each do |ingredients_attributes|
-            if ingredients_attributes[:id].present?
-                ingredient = InstructionIngredient.find_by(id: ingredients_attributes[:id])
-                ingredient.update(quantity: ingredients_attributes[:quantity])
-                ingredient.save
-            end
-          end        
-      if params[:instruction][:new_ingredients]
-          params[:instruction][:new_ingredients].each do |ingredients_attributes|
-            if ingredients_attributes[:name].present?
-              nameIng = ingredients_attributes[:name].capitalize!
-              if ingredient = Ingredient.find_by(name: nameIng)
-                  int = @instruction.ingredients.select { |object| object.id == ingredient.id }
-                  if int
-                    binding.pry
-                    format.html { redirect_to edit_user_instruction_path(current_user, @instruction), notice: 'You already have that ingredient' }
-                    else
-                    newItoI = InstructionIngredient.create(instruction_id: @instruction.id, ingredient_id: ingredient.id, quantity: ingredients_attributes[:quantity])
-                  end
-              else ingredient = Ingredient.create(name: ingredients_attributes[:name])
-                  ingredient.save
-                  newItoI = InstructionIngredient.create(instruction_id: @instruction.id, ingredient_id: ingredient.id, quantity: ingredients_attributes[:quantity])
-              end
-            end
-          end
-      end
-    end
+   
         format.html { redirect_to @instruction, notice: 'Recipe was successfully updated.' }
-      else
-        format.html {  redirect_to edit_user_instruction_path(current_user, @instruction), notice: 'Recipe was not updated.' }
+      # else
+      #   format.html {  redirect_to edit_user_instruction_path(current_user, @instruction), notice: 'Recipe was not updated.' }
       end
-    end
+    
   end
 
   # DELETE /instructions/1
@@ -109,6 +83,6 @@ class InstructionsController < ApplicationController
     end
 
     def instruction_params
-      params.require(:instruction).permit(:name, :content, :cook_time, :user_id, :instruction_ingredients_attributes => [:quantity], :ingredients_attributes => [:name, :ingredient_id, :organic])
+      params.require(:instruction).permit(:name, :content, :cook_time, :user_id, :instruction_ingredients_attributes => [:quantity, :ingredient_attributes => [:name, :instruction_ingredients]])
      end
 end

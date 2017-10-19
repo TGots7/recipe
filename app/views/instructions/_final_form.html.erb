@@ -1,42 +1,44 @@
 <%= render 'layouts/form_errors', object: instruction %>
-<%= form_for instruction do |form| %>
+<%= form_for instruction do |instruction_form| %>
 <div class="container">
   <div class="row">
       <div class="col-sm-6">
       <h3 class="text-center">Recipe</h3>
           <div class="fields">
-            <%= form.label :name %><br>
-            <%= form.text_field :name, :placeholder => "Name" %><br>
-            <%= form.label "Instructions"  %><br>
-            <%= form.text_area :content, :placeholder => "Recipe Instructions" %><br>
-            <%= form.label :cook_time %><br>
-            <%= form.text_field :cook_time, :placeholder => "(ex,. 45 mins)" %><br>
-            <%= form.hidden_field :user_id, value: params[:user_id] %>
+            <%= instruction_form.label :name %><br>
+            <%= instruction_form.text_field :name, :placeholder => "Name" %><br>
+            <%= instruction_form.label "Instructions"  %><br>
+            <%= instruction_form.text_area :content, :placeholder => "Recipe Instructions" %><br>
+            <%= instruction_form.label :cook_time %><br>
+            <%= instruction_form.text_field :cook_time, :placeholder => "(ex,. 45 mins)" %><br>
+            <%= instruction_form.hidden_field :user_id, value: params[:user_id] %>
           </div>
       </div>
 
       <div class="col-sm-6">
           <h3 class="text-center">Ingredients</h3>
-                    <%#= form.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) %> 
-              
-                    <%= form.fields_for :instruction_ingredients do |inst_ing| %>
-                        <%= inst_ing.fields_for :ingredient  do |ing| %>
-                        	<%= ing.label :name %>
-	                        <%= ing.text_field :name %>
-	                        <%= ing.collection_select :ingredient_id, Ingredient.order(:name),:id,:name, include_blank: true %><br>
-	                        <%= ing.check_box :organic, class: "form-check-input" %>
-	                        <%= label :organic, "Check if organic" %><br>
-	                    <% end %>
-                            <%= inst_ing.label :quantity %>
-                            <%= inst_ing.text_field :quantity %><br>
+
+                    <%= instruction_form.fields_for :instruction_ingredients do |inst_ing_form| %>
+                        
+                    <%= inst_ing_form.fields_for :ingredient do |ing_form| %>
+                            <%= ing_form.label :name %>
+                            <%= ing_form.text_field :name, :style => "width: 100px;" %>
+                            <%= ing_form.collection_select :instruction_ingredients, Ingredient.all, :id, :name,  include_blank: true %>
+                            
                     <% end %>
+
+                    <%= inst_ing_form.label :quantity %>
+                    <%= inst_ing_form.text_field :quantity, :style => "width: 100px;" %><br>
+                <% end %>
+              
+                    
                   
             </div>
     </div>
 
       <div class="row justify-content-center submit-row">
         <div class="fields text-center">
-              <%= form.submit %>
+              <%= instruction_form.submit %>
         </div>
       </div>
 </div>
