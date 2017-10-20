@@ -6,7 +6,7 @@
         <div class="col-sm-8 col-sm-offset-2 recipe">
         <h4><%= current_user.nickname %></h4>
         <p><%= current_user.email %></p>
-        <%= image_tag current_user.avatar.url %>
+        <%= image_tag current_user.avatar.url(:thumb) %><br>
                 <%= form_for @user, html: {multipart: true} do |f| %>
                   <%= f.label :avatar %>
                   <%= f.file_field :avatar %><br>
