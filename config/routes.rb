@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
  	root to: 'welcome#index'
  	get '/welcome/:id' => 'welcome#show', as: 'welcome'
-  get 'auth/twitter/callback' => 'sessions#create'
+  	get 'auth/twitter/callback' => 'sessions#create'
+  	patch '/users/:id' => 'users#patch'
 
 end

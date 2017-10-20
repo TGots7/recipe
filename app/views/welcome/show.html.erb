@@ -4,9 +4,14 @@
     </div>
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 recipe">
-        <h4>Your name</h4>
-        <p>email</p>
-        <p>picture</p>
+        <h4><%= current_user.nickname %></h4>
+        <p><%= current_user.email %></p>
+        <%= image_tag current_user.avatar.url %>
+                <%= form_for @user, html: {multipart: true} do |f| %>
+                  <%= f.label :avatar %>
+                  <%= f.file_field :avatar %><br>
+                  <%= f.submit %>
+                <% end %>
         </div>
     </div>
     <div class="row">

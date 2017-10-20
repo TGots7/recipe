@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many  :instructions
   validates :nickname, presence: true
   validates :email, uniqueness: true
+  has_attached_file :avatar, default_url: ':style/default.jpg', styles: {thumb: "100x100>"}
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
