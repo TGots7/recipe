@@ -1,8 +1,8 @@
-$(document).ready(function(){
-    $('.login_box').hover(function(){
-      $('.login-title').html("<h4>YOU SUCK</h4>");
-    })
-  });
+// $(document).ready(function(){
+//     $('.login_box').hover(function(){
+//       $('.login-title').html("<h4>YOU SUCK</h4>");
+//     })
+//   });
   // })
   //   $('.gotto-marry').click(function(){
   //     window.open('http://www.gottomarrygrace.com', "_blank");

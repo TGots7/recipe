@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
 	def patch
 		current_user.update(update_params)
+		redirect_to 
 	end
 
 	def update_params
