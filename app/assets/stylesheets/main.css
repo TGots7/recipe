@@ -33,8 +33,11 @@ html, body {
 
 /* Internet Explorer */
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-
-
+}
+.personal-title {
+	padding: 10px;
+	color: white;
+	font-family: 'Dancing Script', cursive;
 }
 .move-down {
 	margin-top: 5%;
@@ -89,10 +92,25 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	text-decoration: underline;
 }
 .header {
-	background-color: yellow;
+	padding: 5px;
+	background-color: #302A29  ;
+	margin: 0px;
+	color: white;
+}
+.header h5 {
+	margin: 0px;
+}
+.header p {
+	margin: 0px;
+}
+.header a {
+	color: white;
 }
 .legend {
-	background-color: orange;
+	background-color: #E3A541;
+}
+.legend a {
+	color: white;
 }
 .label {
 	display: inline;
@@ -107,6 +125,13 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .recipe {
 	background-color: lightgrey;
 	border: solid 2px black;
+	padding: 10px;
+}
+.person {
+	background-color: lightgrey;
+	border: solid 2px black;
+	margin: 15px;
+	padding: 10px;
 }
 .ingredient-box {
 	background-color: lightgrey;
@@ -118,4 +143,13 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 div.fields_with_errors {
 	border: solid 2px red;
+}
+.side_bar {
+	background-color: lightgrey;
+	border: solid 1px black;
+	color: black;
+	padding: 10px;
+}
+.side_var a {
+	color: black;
 }

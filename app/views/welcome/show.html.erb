@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="row text-center">
-        <h2>Your Recipes !!!!!!</h2>
+    <div class="row text-center ">
+        <h2 class="personal-title text-center">Your Recipes</h2>
     </div>
     <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 recipe">
+        <div class="col-sm-8 person">
         <h4><%= current_user.nickname %></h4>
         <p><%= current_user.email %></p>
         <%= image_tag current_user.avatar.url(:thumb) %><br>
@@ -12,13 +12,13 @@
                   <%= f.file_field :avatar %><br>
                   <%= f.submit %>
                 <% end %>
-        </div>
+        </div>   
     </div>
     <div class="row">
         <div class="col-sm-8">
           <%= render 'instructions/show_recipes', instructions: @user.instructions %>
         </div>
-        <div class="col-sm-4 side_bar">
+        <div class="col-sm-4 side_bar text-center">
             <%= link_to 'To All Chefs', users_path %><br>
         </div>
     </div>
