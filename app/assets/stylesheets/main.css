@@ -38,6 +38,9 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	padding: 10px;
 	color: white;
 	font-family: 'Dancing Script', cursive;
+	margin-left: 30%;
+	font-size: 5em;
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 .move-down {
 	margin-top: 5%;
@@ -91,7 +94,11 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	color: black;
 	text-decoration: underline;
 }
+.sign-out {
+	font-family: 'Noto Serif', serif;
+}
 .header {
+	font-family: 'Dancing Script', cursive;
 	padding: 5px;
 	background-color: #302A29  ;
 	margin: 0px;
@@ -107,6 +114,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	color: white;
 }
 .legend {
+	font-family: 'Noto Serif', serif;
 	background-color: #E3A541;
 }
 .legend a {
@@ -123,15 +131,26 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	margin-top: 20px;
 }
 .recipe {
-	background-color: lightgrey;
+	background-color: white;
 	border: solid 2px black;
 	padding: 10px;
+	box-shadow: 1px 2px 2px #888888;
+}
+.recipe a {
+	color: black;
 }
 .person {
-	background-color: lightgrey;
+	background-color: white;
 	border: solid 2px black;
 	margin: 15px;
 	padding: 10px;
+	box-shadow: 1px 2px 2px #888888;
+	font-family: 'Noto Serif', serif;
+}
+.person h4 {
+	font-family: 'Noto Serif', serif;
+	font-weight: 900;
+	font-size: 3em;
 }
 .ingredient-box {
 	background-color: lightgrey;
@@ -145,11 +164,17 @@ div.fields_with_errors {
 	border: solid 2px red;
 }
 .side_bar {
-	background-color: lightgrey;
-	border: solid 1px black;
+	font-family: 'Noto Serif', serif;
+	background-color: white;
+	border: solid 2px black;
 	color: black;
 	padding: 10px;
+	box-shadow: 1px 2px 2px #888888;
 }
-.side_var a {
-	color: black;
+.side_bar a {
+	border: solid 2px black;
+	background-color: #E3A541 ;
+	color: white;
+	padding: 6px;
+	margin: 10px;
 }

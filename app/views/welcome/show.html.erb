@@ -1,10 +1,10 @@
 <div class="container">
-    <div class="row text-center ">
+    <div class="row text-center">
         <h2 class="personal-title text-center">Your Recipes</h2>
     </div>
     <div class="row">
         <div class="col-sm-8 person">
-        <h4><%= current_user.nickname %></h4>
+        <h4 class="text-center"><%= current_user.nickname %></h4>
         <p><%= current_user.email %></p>
         <%= image_tag current_user.avatar.url(:thumb) %><br>
                 <%= form_for @user, html: {multipart: true} do |f| %>
