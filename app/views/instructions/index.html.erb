@@ -1,4 +1,4 @@
-<h1 class="text-center">All Recipes</h1>
+<h1 class="text-center user-title">All Recipes</h1>
  <div class="container">
   <div class="row justify-content-center">
 
@@ -8,7 +8,7 @@
 
       <div class="col-sm-4 query-box">
         <div>
-          <h3>Order Recipes by:</h3>
+          <h4 class="order_by">Order Recipes by:</h4>
           <%= form_tag("/instructions", method: "get") do %>
             <%= select_tag "query", options_for_select(["Today", "Old Recipes", "Alphabetical", "Alphabetical From Z", "Most Ingredients", "Least Ingredients"]), include_blank: true %>
             <%= submit_tag "Filter" %>

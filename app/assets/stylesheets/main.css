@@ -42,6 +42,20 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	font-size: 5em;
 	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
+.user-title {
+	padding: 10px;
+	font-family: 'Dancing Script', cursive;
+	color: white;
+	font-size: 4em;
+}
+.chefs {
+	font-family: 'Noto Serif', serif;
+	color: white;
+}
+.order_by {
+	font-family: 'Noto Serif', serif;
+	color: white;
+}
 .move-down {
 	margin-top: 5%;
 }
@@ -124,8 +138,11 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	display: inline;
 }
 .all_list_box {
-	background-color: lightgrey;
+	background-color: white;
 	border: solid 2px black;
+}
+.all_list_box a {
+	color: black;
 }
 .submit-row {
 	margin-top: 20px;
@@ -177,4 +194,8 @@ div.fields_with_errors {
 	color: white;
 	padding: 6px;
 	margin: 10px;
+}
+.form {
+	background-color: white;
+	padding: 10px;
 }
