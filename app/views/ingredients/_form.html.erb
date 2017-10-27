@@ -1,17 +1,19 @@
-<%= render 'layouts/form_errors', object: ingredient %>
-<%= form_for ingredient do |form| %>
-  
-  <div class="fields">
-      <%= form.label :name %><br>
-      <%= form.text_field :name %><br><br>
-  </div>
+<div class="form">
+  <%= render 'layouts/form_errors', object: ingredient %>
+  <%= form_for ingredient do |form| %>
+    
+    <div class="fields">
+        <%= form.label :name %><br>
+        <%= form.text_field :name %><br><br>
+    </div>
 
-  <div class="check">
-      <%= form.check_box :organic, class: "form-check-input" %>
-      <%= label :organic, "Check box if this ingredient is organic" %><br><br>
-  </div>
+    <div class="check">
+        <%= form.check_box :organic, class: "form-check-input" %>
+        <%= label :organic, "Check box if this ingredient is organic" %><br><br>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

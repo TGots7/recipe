@@ -47,6 +47,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	font-family: 'Dancing Script', cursive;
 	color: white;
 	font-size: 4em;
+	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 .chefs {
 	font-family: 'Noto Serif', serif;
@@ -170,8 +171,12 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	font-size: 3em;
 }
 .ingredient-box {
-	background-color: lightgrey;
+	background-color: white;
 	border: solid 2px black;
+	padding: 10px;
+}
+.ingredient-box a {
+	color: black;
 }
 .recipe-box {
 	background-color: lightblue;
@@ -196,6 +201,8 @@ div.fields_with_errors {
 	margin: 10px;
 }
 .form {
-	background-color: white;
+	background-color: #FEF6EA  ;
 	padding: 10px;
+	border: solid 2px black;
+	box-shadow: 1px 2px 2px #888888;
 }
