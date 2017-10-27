@@ -5,11 +5,10 @@
     <div class="row">
         <div class="col-sm-8 person">
         <h4 class="text-center"><%= current_user.nickname %></h4>
-        <p><%= current_user.email %></p>
-        <%= image_tag current_user.avatar.url(:thumb) %><br>
+        <p>Your email: <u><%= current_user.email %></u></p>
+        <%= image_tag current_user.avatar.url(:thumb) %><br><br>
                 <%= form_for @user, html: {multipart: true} do |f| %>
-                  <%= f.label :avatar %>
-                  <%= f.file_field :avatar %><br>
+                  <%= f.file_field :avatar %><br><br>
                   <%= f.submit %>
                 <% end %>
         </div>   
