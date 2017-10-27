@@ -15,9 +15,9 @@
           </div>
       </div>
 
-      <div class="col-sm-6">
+      <div class="col-sm-6 ingredient-side">
           <h3 class="text-center">Ingredients</h3>
-
+            <div class="new-ingredients">
                     <%= instruction_form.fields_for :instruction_ingredients do |inst_ing_form| %>
                         
                     <%= inst_ing_form.fields_for :ingredient do |ing_form| %>
@@ -30,10 +30,11 @@
                     <%= inst_ing_form.label :quantity %>
                     <%= inst_ing_form.text_field :quantity, :style => "width: 100px;" %><br>
                 <% end %>
-              
-                    
-                  
-            </div>
+            </div>    
+
+            <button class="new-button">New Ingredient</button>
+        </div>
+
     </div>
 
       <div class="row justify-content-center submit-row">

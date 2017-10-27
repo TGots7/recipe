@@ -139,7 +139,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	display: inline;
 }
 .all_list_box {
-	background-color: white;
+	background-color: rgba(254,246,234,0.6);
 	border: solid 2px black;
 }
 .all_list_box a {
@@ -149,7 +149,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	margin-top: 20px;
 }
 .recipe {
-	background-color: white;
+	background-color: rgba(254,246,234,0.6);
 	border: solid 2px black;
 	padding: 10px;
 	box-shadow: 1px 2px 2px #888888;
@@ -171,7 +171,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	font-size: 3em;
 }
 .ingredient-box {
-	background-color: white;
+	background-color: rgba(254,246,234,0.6);
 	border: solid 2px black;
 	padding: 10px;
 }
@@ -187,7 +187,7 @@ div.fields_with_errors {
 }
 .side_bar {
 	font-family: 'Noto Serif', serif;
-	background-color: white;
+	background-color: rgba(254,246,234,0.6);
 	border: solid 2px black;
 	color: black;
 	padding: 10px;
@@ -201,7 +201,7 @@ div.fields_with_errors {
 	margin: 10px;
 }
 .form {
-	background-color: #FEF6EA  ;
+	background-color: rgba(254,246,234,0.6);
 	padding: 10px;
 	border: solid 2px black;
 	box-shadow: 1px 2px 2px #888888;

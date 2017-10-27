@@ -19,7 +19,7 @@ class InstructionsController < ApplicationController
   # GET /instructions/new
   def new
     @instruction = Instruction.new
-    6.times do
+    1.times do
       @instruction_ingredients = @instruction.instruction_ingredients.build
       @ingredient = @instruction_ingredients.build_ingredient
     end
